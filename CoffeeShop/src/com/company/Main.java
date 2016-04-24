@@ -72,10 +72,9 @@ public class Main {
     }
 
     private static void getNearByCoffeeShop(PriorityQueue<Shop> shopQueue, int numShop){
-        Iterator<Shop> it = shopQueue.iterator();
         int counter = 0;
-        while ((it.hasNext())&&(counter<numShop)){
-            System.out.println(it.next().toString());
+        while ((!shopQueue.isEmpty())&&(counter<numShop)){
+            System.out.println(shopQueue.poll().toString());
             counter++;
         }
     }

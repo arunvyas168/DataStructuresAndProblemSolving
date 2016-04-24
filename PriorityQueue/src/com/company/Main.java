@@ -7,12 +7,14 @@ import java.util.PriorityQueue;
 public class Main {
 
     public static void main(String[] args) {
-        Comparator<Integer> comp = new ReverseSort();
-        PriorityQueue<Integer> pq = new PriorityQueue<Integer>(2,comp);
-        pq.add(44);
-        pq.add(8);
-        pq.add(6);
-        pq.add(75);
+        Comparator<Double> comp = new ReverseSort();
+        PriorityQueue<Double> pq = new PriorityQueue<Double>(2,comp);
+        pq.add(.0861);
+        pq.add(10.0793);
+        pq.add(85.1957);
+        pq.add(.0645);
+        pq.add(82.9224);
+        pq.add(31.9107);
         while (!pq.isEmpty()){
             System.out.println(pq.remove());
         }
@@ -20,15 +22,7 @@ public class Main {
         PriorityQueue<Player> playerQueue = new PriorityQueue<Player>(3, new Comparator<Player>() {
             @Override
             public int compare(Player o1, Player o2) {
-                if (o1.getScore() < o2.getScore())
-                {
-                    return -1;
-                }
-                if (o1.getScore() > o2.getScore())
-                {
-                    return 1;
-                }
-                return 0;
+               return o1.getScore().compareTo(o2.getScore());
             }
         });
 
@@ -37,11 +31,16 @@ public class Main {
         playerQueue.add(new Player("amma",99.00));
         playerQueue.add(new Player("appa",103.00));
         playerQueue.add(new Player("golu",104.00));
-        Iterator<Player> it = playerQueue.iterator();
+        /*Iterator<Player> it = playerQueue.iterator();
         while (it.hasNext()){
             System.out.println(it.next().toString());
-        }
+        }*/
 
+        Object last;
+        while ((last = playerQueue.poll()) != null) {
+            System.out.println(last);
+        }
+        System.out.println(playerQueue.size());
 
     }
 
