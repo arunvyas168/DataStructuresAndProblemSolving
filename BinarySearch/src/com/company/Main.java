@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
         //int [] array = {1,2,3,4,5,7,8,9,10,14};
-        int [] array = {1,2,3};
-        int keyIndex = binarySearch(array,3);
+        int [] array = {1,2};
+        int keyIndex = binarySearch(array,2);
         if ( keyIndex >= 0){
             System.out.println("Array has the key at index: "+ keyIndex);
         } else{
