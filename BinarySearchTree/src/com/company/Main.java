@@ -48,6 +48,7 @@ public class Main {
         }
 
         printBFSTraversal(root);
+        printLevelBFSTraversal(root);
 
     }
 
@@ -117,6 +118,31 @@ public class Main {
             }
         }
 
+    }
+
+    public static void printLevelBFSTraversal(Node root){
+        System.out.println("Printing each level of Tree using Breadth First Search ");
+        Queue<Node> queue = new LinkedList<Node>();
+        if (root == null){
+            System.out.println("Tree is empty");
+            return;
+        }
+        queue.add(root);
+        while (!queue.isEmpty()){
+            int levelQueue = queue.size();
+            while (levelQueue>0){
+                Node temp = queue.remove();
+                System.out.print(temp.data+" ");
+                if(temp.left != null){
+                    queue.add(temp.left);
+                }
+                if(temp.right != null){
+                    queue.add(temp.right);
+                }
+                levelQueue--;
+            }
+            System.out.println();
+        }
     }
 
     public static int findBSTMinNode(Node root){
