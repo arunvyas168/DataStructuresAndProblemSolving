@@ -27,7 +27,6 @@ public class Main {
         return maxDifference;
     }
 
-
      /*
     This Method will find difference between smallest and the largest element in the array.
      */
