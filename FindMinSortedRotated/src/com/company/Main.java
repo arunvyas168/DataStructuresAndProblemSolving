@@ -19,7 +19,7 @@ public class Main {
     public static int sortedRotatedSearch_Util(int[] array, int startIndex, int endIndex) {
 
         //If array is not rotated at all;
-        if(endIndex<startIndex){
+        if(array[endIndex]>array[startIndex]){
             return array[0];
         }
         //If there is just 1 element left
