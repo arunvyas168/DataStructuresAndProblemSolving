@@ -18,6 +18,7 @@ public class Main {
 
     public static int findKthSmallestElement(int[] array, int k){
         PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.reverseOrder());
+        //PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.naturalOrder());
         for(Integer i : array){
             heap.offer(i);
             if(heap.size()>k){
