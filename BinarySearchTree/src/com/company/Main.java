@@ -17,6 +17,8 @@ public class Main {
         root = addNodeToBST(root,30);
         root = addNodeToBST(root,25);
         //root = addNodeToBST(root,22);
+        System.out.println("The Diameter of the tree in O(n): "+ diameter(root));
+        System.out.println("The Diameter of the tree in O(n^2): "+ diameter_2(root));
         System.out.println("The min depth is: "+minDepth(root)+" and the max depth is: "+maxDepth(root));
         if(isBalanced(root)){
             System.out.println("The tree is balanced binary tree");
@@ -211,5 +213,62 @@ public class Main {
         }
     }
 
+    /*
+    ***************************************** Diameter of a Binary Tree O(n) ******************************************
+    */
+
+    /*
+        This does it in O(n)
+    */
+    public static int diameter(Node root){
+        Height height = new Height();
+        return diameter_util(root,height);
+    }
+    public static int diameter_util(Node root,Height height ){
+        if (root == null){
+            height.h = 0;
+            return 0;
+        }
+
+        Height lHeight = new Height();
+        Height rHeight = new Height();
+
+        lHeight.h++;
+        rHeight.h++;
+        int lDiameter = diameter_util(root.left,lHeight);
+        int rDiameter = diameter_util(root.right,rHeight);
+
+        height.h = Math.max(lHeight.h,rHeight.h)+1;
+
+        return  Math.max((lHeight.h+rHeight.h+1),(Math.max(lDiameter,rDiameter)));
+
+    }
+
+    static class Height
+    {
+        public int h;
+        public Height(){
+            this.h=0;
+        }
+    }
+
+    /*
+    ***************************************** Diameter of a Binary Tree O(n^2) ******************************************
+    */
+
+    /*
+        This does it in O(n^2)
+    */
+
+    public static int diameter_2(Node root){
+        if (root == null){
+            return 0;
+        }
+        int leftHeight = maxDepth(root.left);
+        int rightHeight = maxDepth(root.right);
+        int lDiameter  = diameter_2(root.left);
+        int rDiameter = diameter_2(root.right);
+        return Math.max((leftHeight+rightHeight+1),Math.max(lDiameter,rDiameter));
+    }
 
 }
