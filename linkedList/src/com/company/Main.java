@@ -8,12 +8,16 @@ public class Main {
     public static void main(String[] args) {
 
         Node list1 = buildList(5);
+
+        System.out.println("### Printing after rearranging odd and even together ###");
+        Node rearrange = rearrangeOddEven(list1);
+        printList(rearrange);
+
         Node list2 = buildList(5);
 
         System.out.println("### Printing the sorted merge List content ###");
         list1 = sortedMerge(list1,list2);
         printList(list1);
-
 
         //Checking for duplicate
         if (findDuplicate(list1)) {
@@ -21,8 +25,6 @@ public class Main {
         } else{
             System.out.println("No duplicate entry");
         }
-
-
 
         System.out.println("### Printing after deleteing middle element ###");
         printList(deleteMiddle(list1));
@@ -32,10 +34,10 @@ public class Main {
         Node revList = reverseList(list1);
         printList(revList);
 
-
         System.out.println("### Printing after deleting List content ###");
         Node deletedList = deleteNode(revList,5);
         printList(deletedList);
+
 
     }
 
@@ -182,6 +184,36 @@ public class Main {
             ptr2 = ptr2.next.next;
         }
         previous.next = ptr1.next;
+        return head;
+    }
+
+    public static Node rearrangeOddEven(Node head){
+
+        if ((head==null)||(head.next==null)){
+            return head;
+        }
+
+        Node odd = head;
+        Node even = head.next;
+        Node evenFirst = even;
+
+        while (true){
+            if ((odd==null)||(even==null)||(even.next==null)){
+                odd.next = evenFirst;
+                break;
+            }
+            odd.next = even.next;
+            odd = even.next;
+
+            if (odd.next==null){
+                even.next = null;
+                odd.next = evenFirst;
+                break;
+            }
+            even.next = odd.next;
+            even = odd.next;
+        }
+
         return head;
     }
 
