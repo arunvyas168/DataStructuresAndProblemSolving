@@ -42,6 +42,7 @@ public class Main {
         String input2 = "forgeeksgeeks";
         System.out.println(isAnagramsCountMethod(input1,input2));
         System.out.println(isAnagramsSortMethod(input1,input2));
+        System.out.println(isAnagramsHashMapMethod(input1,input2));
 
     }
 
@@ -80,6 +81,37 @@ public class Main {
             }
         }
         return true;
+    }
+
+    public static boolean isAnagramsHashMapMethod(String s, String t){
+        if (s.length()!=t.length()){
+            return false;
+        }
+        Map<Character,Integer> hm = new HashMap<>();
+        for (int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            if(hm.containsKey(c)){
+                int count = hm.get(c);
+                hm.put(c,count+1);
+            }else {
+                hm.put(c,1);
+            }
+        }
+        for (int i=0;i<t.length();i++){
+            char c = t.charAt(i);
+            if (!hm.containsKey(c)){
+                return false;
+            }else {
+                int count = hm.get(c);
+                if (count == 1){
+                    hm.remove(c);
+                }else {
+                    hm.put(c,count-1);
+                }
+            }
+        }
+        return (hm.size()==0);
+
     }
 
 
