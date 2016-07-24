@@ -30,6 +30,7 @@ public class Main {
         System.out.println("The minimum value in the BST is: "+findBSTMinNode(root));
         deleteNodeBST(root,30);
         printInOrder(root);
+        System.out.println();
         boolean hasSum = hasPathSum(root, 150);
         if (hasSum){
             System.out.println("This tree has a path that sums to: 150");
@@ -52,6 +53,14 @@ public class Main {
         printBFSTraversal(root);
         printLevelBFSTraversal(root);
 
+        System.out.println("******** Mirror **********");
+        mirror(root);
+        printInOrder(root);
+        System.out.println();
+        mirror(root);
+        printInOrder(root);
+        System.out.println();
+
     }
 
     public static Node addNodeToBST(Node root, int data){
@@ -71,7 +80,7 @@ public class Main {
             return;
         }
         printInOrder(root.left);
-        System.out.println(root.data);
+        System.out.print(root.data+" ");
         printInOrder(root.right);
     }
 
@@ -269,6 +278,20 @@ public class Main {
         int lDiameter  = diameter_2(root.left);
         int rDiameter = diameter_2(root.right);
         return Math.max((leftHeight+rightHeight+1),Math.max(lDiameter,rDiameter));
+    }
+
+    /*
+    ***************************************** Mirror of a Binary Tree ******************************************
+    */
+    public static void mirror(Node root){
+        if (root == null){
+            return;
+        }
+        mirror(root.left);
+        mirror(root.right);
+        Node temp = root.left;
+        root.left = root.right;
+        root.right = temp;
     }
 
 }
