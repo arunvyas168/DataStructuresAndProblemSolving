@@ -33,6 +33,9 @@ public class Main {
         System.out.println("### Printing reversed List content ###");
         Node revList = reverseList(list1);
         printList(revList);
+        System.out.println("### Printing recursive reversed List ###");
+        revList = recursiveReverse(revList);
+        printList(revList);
 
         System.out.println("### Printing after deleting List content ###");
         Node deletedList = deleteNode(revList,5);
@@ -92,6 +95,21 @@ public class Main {
             current = next;
         }
         return result;
+    }
+
+    public static Node recursiveReverse(Node head){
+        if(head==null || head.next == null)
+            return head;
+
+        //get second node
+        Node second = head.next;
+        //set first's next to be null
+        head.next = null;
+
+        Node rest = reverseList(second);
+        second.next = head;
+
+        return rest;
     }
 
     public static Node sortedAdd(Node head, int data){
