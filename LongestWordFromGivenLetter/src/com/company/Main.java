@@ -45,6 +45,7 @@ public class Main {
         wordList.add("deltoid");
         wordList.add("gaff");
         wordList.add("giraffe");
+        wordList.add("giraffffffe");
         wordList.add("microphone");
         wordList.add("reef");
         wordList.add("qar");
@@ -54,14 +55,18 @@ public class Main {
         int maxLength = 0;
         boolean isValidString = false;
         for(String str : wordList){
+            populateLetterMap();
             for (int i=0;i<str.length();i++){
                 if(!letterMap.containsKey(str.charAt(i))){
                     isValidString = false;
                     break;
                 }else{
                     Integer temp =  letterMap.get(str.charAt(i));
-                    if(--temp !=0) {
-                        letterMap.put(str.charAt(i), temp);
+                    if(temp !=0) {
+                        letterMap.put(str.charAt(i), temp-1);
+                    }else {
+                        isValidString = false;
+                        break;
                     }
                     isValidString = true;
                 }

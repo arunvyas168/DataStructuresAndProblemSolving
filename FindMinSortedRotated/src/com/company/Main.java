@@ -20,7 +20,7 @@ public class Main {
 
         //If array is not rotated at all;
         if(array[endIndex]>array[startIndex]){
-            return array[0];
+            return array[startIndex];
         }
         //If there is just 1 element left
         if (startIndex == endIndex){

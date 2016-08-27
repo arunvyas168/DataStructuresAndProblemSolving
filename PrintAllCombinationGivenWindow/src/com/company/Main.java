@@ -4,21 +4,24 @@ public class Main {
 
     public static void main(String[] args) {
         int arr[] = {1, 2, 3, 4, 5};
-        int k_window = 2;
+        int k_window = 3;
         int n = arr.length-1;
         System.out.println("******Problem:1******");
+        System.out.println("Prints one combination with 1 set of numbers of size window: ");
         printCombination(arr, n, k_window);
 
         System.out.println("******Problem:2******");
-        //char[] set = {'a','b','c','d'};
-        //printIfBitIsSet(set);
-        boolean[] B = new boolean[arr.length];
-        subset(arr, 2, 0, 0, B);
-
+        char[] set = {'a','b','c','d'};
+        printIfBitIsSet(set);
 
         System.out.println("******Problem:3******");
-        String str = "abcde";
+        boolean[] B = new boolean[arr.length];
+        subset(arr, 3, 0, 0, B);
+
+        System.out.println("******Problem:3******");
+        String str = "abcd";
         PrintCombinations(str, 2, "");
+
     }
 
     public static void printCombination(int arr[], int array_len, int k_window)
@@ -56,7 +59,6 @@ public class Main {
             //combinationUtil(arr, data, i, end, index+1, k_window);
         }
     }
-
 
     public static void subset(int[] A, int k, int start, int currLen, boolean[] used) {
 
@@ -102,7 +104,6 @@ public class Main {
     }
 
 
-/*
     public static void printIfBitIsSet(char[] set){
         long pow_set_size = (long) Math.pow(2,set.length);
         int counter, j;
@@ -119,7 +120,6 @@ public class Main {
         }
 
     }
-*/
 
 }
 
@@ -127,16 +127,20 @@ public class Main {
 /*
 SAMPLE OUTPUT:
 ******Problem:1******
-1 2
-1 3
-1 4
-1 5
-2 3
-2 4
-2 5
-3 4
-3 5
-4 5
+Prints one combination with 1 set of numbers of size window:
+1 2 3
+1 2 4
+1 2 5
+1 3 4
+1 3 5
+1 4 5
+2 3 4
+2 3 5
+2 4 5
+3 4 5 //For example once 3,4,5 is printed it wont print 453
+
+
+
 ******Problem:2******
 1 2
 1 3

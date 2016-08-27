@@ -216,7 +216,7 @@ public class Main {
         Node evenFirst = even;
 
         while (true){
-            if ((odd==null)||(even==null)||(even.next==null)){
+            if ((even.next==null)){
                 odd.next = evenFirst;
                 break;
             }
