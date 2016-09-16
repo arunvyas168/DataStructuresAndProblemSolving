@@ -43,7 +43,26 @@ public class Main {
         System.out.println(isAnagramsCountMethod(input1,input2));
         System.out.println(isAnagramsSortMethod(input1,input2));
         System.out.println(isAnagramsHashMapMethod(input1,input2));
+        System.out.println(isAnagramBestMethod(input1,input2));
 
+    }
+
+    public static boolean isAnagramBestMethod(String s, String t){
+        int[] sArray = new int[256];
+        if (s.length()!=t.length()){
+            return false;
+        }
+        for (int i=0;i<s.length();i++){
+            sArray[s.charAt(i)]++;
+            sArray[t.charAt(i)]--;
+        }
+
+        for (int i=0; i<sArray.length;i++){
+            if (sArray[i]!=0){
+                return false;
+            }
+        }
+        return true;
     }
 
     public static boolean isAnagramsCountMethod(String s,String t)
