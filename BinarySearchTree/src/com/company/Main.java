@@ -52,6 +52,7 @@ public class Main {
 
         printBFSTraversal(root);
         printLevelBFSTraversal(root);
+        System.out.println("Distance between root and 50 is: "+findDistancePath(root));
 
         System.out.println("******** Mirror **********");
         mirror(root);
@@ -292,6 +293,25 @@ public class Main {
         Node temp = root.left;
         root.left = root.right;
         root.right = temp;
+    }
+
+    public static int findDistancePath(Node root) {
+        if (root == null){
+            return -1;
+        }
+        if (root.data == 50){
+            return 0;
+        }
+        int left = findDistancePath(root.left);
+        int right = findDistancePath(root.right);
+        if ((left==-1)&&(right == -1)){
+            return -1;
+        }
+        if (left>right){
+            return left+1;
+        }else {
+            return right+1;
+        }
     }
 
 }
